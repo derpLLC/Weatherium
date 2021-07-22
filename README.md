@@ -9,7 +9,7 @@ A new Flutter project.
   <img width="32%" src="screenshots/secondscreen.jpg?raw=true">
 </p>
 
-## Demp
+## Demo
 <p align="center">
   <img width="32%" src="screenshots/demo.gif?raw=true">
 </p>
