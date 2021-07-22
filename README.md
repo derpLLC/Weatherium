@@ -5,9 +5,64 @@ A new Flutter project.
 ## Screenshots
 <p align="center">
   <img width="32%" src="screenshots/home.jpg?raw=true">
+  <img width="32%" src="screenshots/home2.jpg?raw=true">
   <img width="32%" src="screenshots/secondscreen.jpg?raw=true">
 </p>
 
+## Demp
+<p align="center">
+  <img width="32%" src="screenshots/demo.gif?raw=true">
+</p>
+
+## Plugins
+
+**Table of contents:**
+The libraries that this app is using as of now:
+
+- [Geolocator (`geolocator`)](https://pub.dev/packages/geolocator)
+- [Geocoding (`geocoding`)](https://pub.dev/packages/geocoding)
+- [Flutter Svg (`flutter_svg`)](https://pub.dev/packages/flutter_svg)
+- [Intl (`intl`)](https://pub.dev/packages/intl)
+- [Http (`http`)](https://pub.dev/packages/http)
+- [Google Fonts (`google_fonts`)](https://pub.dev/packages/google_fonts)
+- [Get (`get`)](https://pub.dev/packages/get)
+---
+
+#### Platform Support
+
+| Android | iOS |
+|:-------:|:---:|
+|    ✔️    |  ✔️  |
+
+----
+
+## Run Locally
+
+Make sure that you have flutter and dart installed and setup. If you don't then refer to the official installation instructions at [Flutter Docs](https://flutter.dev/docs/get-started/install)
+
+Then run the following commands
+
+Clone the project
+
+```bash
+  git clone https://github.com/derpLLC/Weatherium
+```
+
+Go to the project directory
+
+```bash
+  cd Weatherium
+```
+
+Run the app
+
+```bash
+  flutter run
+```
+
+## Issues
+
+Please file issues, bugs, or feature requests in our [issue tracker](https://github.com/derpLLC/Weatherium/issues/new/choose).
 
 ## License
 
