@@ -1,8 +1,9 @@
-# weatherium
+# Weatherium
 
-A new Flutter project.
+Weatherium is a cross platform application to view current weather status.
 
 ## Screenshots
+
 <p align="center">
   <img width="32%" src="screenshots/home.jpg?raw=true">
   <img width="32%" src="screenshots/home2.jpg?raw=true">
@@ -10,6 +11,7 @@ A new Flutter project.
 </p>
 
 ## Demo
+
 <p align="center">
   <img width="32%" src="screenshots/demo.gif?raw=true">
 </p>
@@ -26,15 +28,16 @@ The libraries that this app is using as of now:
 - [Http (`http`)](https://pub.dev/packages/http)
 - [Google Fonts (`google_fonts`)](https://pub.dev/packages/google_fonts)
 - [Get (`get`)](https://pub.dev/packages/get)
+
 ---
 
 #### Platform Support
 
 | Android | iOS |
-|:-------:|:---:|
-|    ✔️    |  ✔️  |
+| :-----: | :-: |
+|   ✔️    | ✔️  |
 
-----
+---
 
 ## Run Locally
 
