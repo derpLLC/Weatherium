@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:weatherium/screens/homescreen.dart';
 import 'package:weatherium/services/openweather.dart';
@@ -25,8 +26,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CircularProgressIndicator(),
+    final Widget svg = SvgPicture.asset('assets/icons/weather.svg',
+        height: MediaQuery.of(context).size.height * 0.25);
+
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            svg,
+            SizedBox(height: 40),
+            CircularProgressIndicator(color: Colors.white)
+          ],
+        ),
+      ),
     );
   }
 }
