@@ -6,11 +6,13 @@ import 'package:weatherium/constants/constant.dart';
 Widget getIcon(String description, {double? height}) {
   Widget svg = Icon(Icons.error_outline_rounded, color: Colors.white);
 
-  iconsForConditions.forEach((key, value) {
+  for (String key in iconsForConditions.keys) {
     if (key == description) {
-      svg = SvgPicture.asset(value, height: height);
+      svg =
+          SvgPicture.asset(iconsForConditions[key].toString(), height: height);
+      break;
     }
-  });
+  }
 
   return svg;
 }
