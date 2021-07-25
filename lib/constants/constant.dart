@@ -3,7 +3,7 @@ final Map<String, String> iconsForConditions = {
   'few clouds': 'assets/icons/sunny_intervals.svg',
   'scattered clouds': 'assets/icons/white_cloud.svg',
   'mist': 'assets/icons/mist.svg',
-  'Haze': 'assets/icons/mist.svg',
+  'haze': 'assets/icons/mist.svg',
   'Smoke': 'assets/icons/mist.svg',
   'sand/ dust whirls': 'assets/icons/mist.svg',
   'sand': 'assets/icons/mist.svg',
