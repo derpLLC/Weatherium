@@ -1,7 +1,7 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
-class Location {
+class Loc {
   /// Determine the current position of the device.
   ///
   /// When the location services are not enabled or permissions
@@ -47,5 +47,11 @@ class Location {
     List<Placemark> placemark =
         await placemarkFromCoordinates(latitude, longitude);
     return placemark[0].locality;
+  }
+
+  Future<Map<String, dynamic>> getCoordinatesFromCityName(
+      String cityName) async {
+    List<Location> location = await locationFromAddress(cityName);
+    return location[0].toJson();
   }
 }
