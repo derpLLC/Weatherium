@@ -1,13 +1,36 @@
 import 'dart:ui';
 
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:weatherium/screens/homescreen.dart';
+import 'package:weatherium/services/openweather.dart';
 import 'package:weatherium/utilites/getIcon.dart';
 
-class SecondScreen extends StatelessWidget {
+class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.weatherData}) : super(key: key);
 
   final weatherData;
+
+  @override
+  _SecondScreenState createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  final _searchController = TextEditingController();
+  var weatherData;
+
+  void getCityWeatherData(String cityName) async {
+    weatherData = await getWeatherDataFromCityName(cityName);
+    Get.offAll(() => HomeScreen(weatherData: weatherData));
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +38,24 @@ class SecondScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text('${weatherData['city']}'),
+        actions: [
+          AnimSearchBar(
+            textController: _searchController,
+            rtl: true,
+            autoFocus: true,
+            onSuffixTap: () {
+              setState(() {
+                getCityWeatherData(_searchController.text);
+                _searchController.clear();
+              });
+            },
+            closeSearchOnSuffixTap: true,
+            width: MediaQuery.of(context).size.width,
+            animationDurationInMilli: 250,
+            color: Color(0xFF252736),
+          )
+        ],
+        title: Text('${widget.weatherData['city']}'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -83,19 +123,19 @@ class SecondScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '${DateFormat('EEEEE').format(DateTime.fromMillisecondsSinceEpoch(weatherData['daily'][index]['dt'] * 1000))}',
+                                '${DateFormat('EEEEE').format(DateTime.fromMillisecondsSinceEpoch(widget.weatherData['daily'][index]['dt'] * 1000))}',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
                               getIcon(
-                                  '${weatherData['daily'][index]['weather'][0]['description']}',
+                                  '${widget.weatherData['daily'][index]['weather'][0]['description']}',
                                   height: 30)
                             ],
                           ),
                           Align(
                             alignment: Alignment.center,
                             child: Text(
-                              '${weatherData['daily'][index]['temp']['max'].toInt()}°    ${weatherData['daily'][index]['temp']['min'].toInt()}°',
+                              '${widget.weatherData['daily'][index]['temp']['max'].toInt()}°    ${widget.weatherData['daily'][index]['temp']['min'].toInt()}°',
                               style:
                                   TextStyle(fontSize: 20, color: Colors.white),
                             ),
@@ -112,7 +152,7 @@ class SecondScreen extends StatelessWidget {
               child: Align(
                   alignment: Alignment.topRight,
                   child: getIcon(
-                      '${weatherData['current']['weather'][0]['description']}',
+                      '${widget.weatherData['current']['weather'][0]['description']}',
                       height: 125)),
             ),
           ],
