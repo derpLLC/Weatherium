@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -110,13 +109,13 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.55,
                   child: ListView.separated(
                     separatorBuilder: (context, index) =>
                         Divider(color: Colors.transparent),
                     itemCount: 7,
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(9.0),
                       child: Stack(
                         children: [
                           Row(
