@@ -1,6 +1,6 @@
+import 'dart:math';
 import 'dart:ui';
 
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:weatherium/screens/homescreen.dart';
 import 'package:weatherium/services/openweather.dart';
 import 'package:weatherium/utilites/getIcon.dart';
+import 'package:weatherium/utilites/getTip.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.weatherData}) : super(key: key);
@@ -20,6 +21,7 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   final _searchController = TextEditingController();
+  final _rnd = Random().nextInt(30);
   var weatherData;
 
   void getCityWeatherData(String cityName) async {
@@ -84,11 +86,11 @@ class _SecondScreenState extends State<SecondScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('15 minutes ago',
+                          Text('$_rnd minutes ago',
                               style: TextStyle(color: Colors.white)),
                           SizedBox(height: 15),
                           Text(
-                              'The Wind is very strong today! This is not the time for a yacht trip.',
+                              '${getTip(widget.weatherData['current']['weather'][0]['description'])}',
                               style: TextStyle(color: Colors.white))
                         ],
                       ),
@@ -110,13 +112,14 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.55,
                   child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) =>
                         Divider(color: Colors.transparent),
                     itemCount: 7,
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(9.0),
                       child: Stack(
                         children: [
                           Row(
