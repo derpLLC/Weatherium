@@ -44,3 +44,61 @@ final Map<String, String> iconsForConditions = {
   'thunderstorm with drizzle': 'assets/icons/thundery_showers.svg',
   'thunderstorm with heavy drizzle': 'assets/icons/thunderstorms.svg',
 };
+
+final Map<String, String> tipForWeather = {
+  'clear sky':
+      'The sky is clear and remember to use Sun Screen if you are going out in the Sun.',
+  'few clouds': 'The Sun and Clouds are playing Hide and Seek today.',
+  'scattered clouds': 'The Clouds are scattered here and there.',
+  'mist': 'It\'s misty today. Stephen King is this your doing?',
+  'haze': 'The atmosphere is hazy, just like my mind.',
+  'Smoke':
+      'Uh oh! smoke is out in the air, remember to wear mask and take appropriate precautions.',
+  'sand/ dust whirls': 'It\'s sandy out there be careful.',
+  'sand': 'It\'s sandy out there be careful.',
+  'dust': 'It\'s dusty out there be careful.',
+  'volcanic ash':
+      'It\'s raining volcanic ash, dont\'t breathe it in and take care of yourself.',
+  'squalls': 'Squalls are out guys.',
+  'tornado': 'Roundy Roundy fast wind is approaching! be careful.',
+  'fog':
+      'Seems like John Cena is everywhere today because i can\'t see anything. It\'s Foggy out there guys!',
+  'light rain': 'Little bit of rain, nothing to worry about.',
+  'shower rain': 'Shower rain? What?',
+  'ragged shower rain': 'Ragged Shower Rain? Even weirder.',
+  'moderate rain':
+      'Moderate rain, seems like a nice weather to take a bath out on the street.',
+  'heavy intensity rain':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'very heavy rain':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'extreme rain': 'Fierce rain, do not go outside.',
+  'light intensity shower rain': 'Little bit of rain, nothing to worry about.',
+  'high intensity shower rain':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'freezing rain': 'Freezing rain, stay warm!',
+  'broken clouds': 'Clouds got brokey-wokey.',
+  'overcast clouds': 'Incoming and Outgoing of Clouds',
+  'light intensity drizzle': 'Little bit of rain, nothing to worry about.',
+  'shower drizzle': 'Little bit of rain, nothing to worry about.',
+  'shower rain and drizzle': 'Little bit of rain, nothing to worry about.',
+  'drizzle': 'Rain is drizzling just like Saltbae drizzles the salt.',
+  'heavy intensity drizzle':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'light intensity drizzle rain': 'Little bit of rain, nothing to worry about.',
+  'high intensity drizzle rain':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'drizzle rain': 'Rain is drizzling like Saltbae drizzles the salt.',
+  'heavy shower rain and drizzle':
+      'It\'s raining heavily, enjoy the weather with your loved one.',
+  'thunderstorm with light rain': 'Thunderstorm with light rain.',
+  'thunderstorm rain': 'Thunderstorm with rain.',
+  'thunderstorm with heavy rain': 'It\'s gonna rain heavily.',
+  'light thunderstorm': 'Light thunderstorm.',
+  'thunderstorm': 'Thunderstorm',
+  'heavy thunderstorm': 'Heavy Thunderstorm',
+  'ragged thunderstorm': 'Burntout thunderstorm.',
+  'thunderstorm with light drizzle': 'Thunderstorm with light drizzle',
+  'thunderstorm with drizzle': 'Thunderstorm with drizzle',
+  'thunderstorm with heavy drizzle': 'Thunderstorm with heavy drizzle',
+};
