@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -38,23 +39,6 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        actions: [
-          AnimSearchBar(
-            textController: _searchController,
-            rtl: true,
-            autoFocus: true,
-            onSuffixTap: () {
-              setState(() {
-                getCityWeatherData(_searchController.text);
-                _searchController.clear();
-              });
-            },
-            closeSearchOnSuffixTap: true,
-            width: MediaQuery.of(context).size.width,
-            animationDurationInMilli: 250,
-            color: Color(0xFF252736),
-          )
-        ],
         title: Text('${widget.weatherData['city']}'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -67,6 +51,22 @@ class _SecondScreenState extends State<SecondScreen> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
+            Positioned(
+              left: 20.0,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: CupertinoSearchTextField(
+                  controller: _searchController,
+                  onSubmitted: (name) {
+                    getCityWeatherData(name);
+                    _searchController.clear();
+                  },
+                  itemColor: Colors.white,
+                  style: TextStyle(color: Colors.white),
+                  prefixInsets: EdgeInsets.all(8.0),
+                ),
+              ),
+            ),
             Column(
               children: [
                 Padding(
