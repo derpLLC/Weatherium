@@ -1,3 +1,5 @@
+import 'package:flutter/painting.dart';
+
 final Map<String, String> iconsForConditions = {
   'clear sky': 'assets/icons/sunny.svg',
   'few clouds': 'assets/icons/sunny_intervals.svg',
@@ -101,4 +103,447 @@ final Map<String, String> tipForWeather = {
   'thunderstorm with light drizzle': 'Thunderstorm with light drizzle',
   'thunderstorm with drizzle': 'Thunderstorm with drizzle',
   'thunderstorm with heavy drizzle': 'Thunderstorm with heavy drizzle',
+};
+
+Map<String, BoxDecoration> backgroundColor = {
+  'clear sky': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 254, 204, 81),
+      Color.fromARGB(255, 250, 134, 7)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'few clouds': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 108, 250, 228),
+      Color.fromARGB(255, 114, 238, 236)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'scattered clouds': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 108, 250, 228),
+      Color.fromARGB(255, 114, 238, 236)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'mist': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'haze': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'Smoke': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'sand/ dust whirls': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 249, 204, 96),
+      Color.fromARGB(255, 231, 168, 18)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'sand': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 249, 204, 96),
+      Color.fromARGB(255, 231, 168, 18)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'dust': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 249, 204, 96),
+      Color.fromARGB(255, 231, 168, 18)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'volcanic ash': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'squalls': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'tornado': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'fog': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 184, 194, 193),
+      Color.fromARGB(255, 184, 194, 193)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'light rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'shower rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'ragged shower rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'moderate rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 80, 200, 251),
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'heavy intensity rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'very heavy rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'extreme rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'light intensity shower rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'high intensity shower rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'freezing rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'broken clouds': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 108, 250, 228),
+      Color.fromARGB(255, 114, 238, 236)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'overcast clouds': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 108, 250, 228),
+      Color.fromARGB(255, 114, 238, 236)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'light intensity drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'shower drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'shower rain and drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'heavy intensity drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'light intensity drizzle rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'high intensity drizzle rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'drizzle rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'heavy shower rain and drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm with light rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm with heavy rain': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'light thunderstorm': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'heavy thunderstorm': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'ragged thunderstorm': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm with light drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm with drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
+  'thunderstorm with heavy drizzle': BoxDecoration(
+      gradient: LinearGradient(
+    colors: [
+      Color.fromARGB(255, 89, 229, 254),
+      Color.fromARGB(255, 91, 203, 251)
+    ],
+    stops: [0.6, 0.9],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  )),
 };

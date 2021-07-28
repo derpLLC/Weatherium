@@ -30,6 +30,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         height: MediaQuery.of(context).size.height * 0.25);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

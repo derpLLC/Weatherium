@@ -8,9 +8,8 @@ Widget getIcon(String description, {double? height}) {
 
   for (String key in iconsForConditions.keys) {
     if (key == description) {
-      svg =
-          SvgPicture.asset(iconsForConditions[key].toString(), height: height);
-      break;
+      return SvgPicture.asset(iconsForConditions[key].toString(),
+          height: height);
     }
   }
 
