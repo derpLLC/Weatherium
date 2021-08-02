@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
           primaryColor: Color(0xFF252736),
-          scaffoldBackgroundColor: Color(0xFF252736),
           cardColor: Colors.white.withOpacity(0.4),
           cardTheme: CardTheme(
               shape: RoundedRectangleBorder(

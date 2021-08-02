@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherium/screens/secondscreen.dart';
+import 'package:weatherium/utilites/getBackgroundColor.dart';
 import 'package:weatherium/utilites/getIcon.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   var date;
   List<dynamic> hourly = [];
   var selectedIndex = 0;
+  var backgroundColor;
+  var icon;
 
   void updateWeather(Map<String, dynamic> weatherData) {
     setState(() {
@@ -36,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             '${weatherData['weather'][0]['description']}');
         date = weatherData['dt'];
         updateHourlyWeather(widget.weatherData['hourly'], date);
+        icon = getIcon('${weatherData['weather'][0]['description']}');
       } else {
         temp = weatherData['temp']['max'].toInt();
         windSpeed = weatherData['wind_speed'];
@@ -44,7 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
             '${weatherData['weather'][0]['description']}');
         date = weatherData['dt'];
         updateHourlyWeather(widget.weatherData['hourly'], date);
+        icon = getIcon('${weatherData['weather'][0]['description']}');
       }
+
+      backgroundColor = getBackgroundColor(widget.weatherData['daily']
+          [selectedIndex]['weather'][0]['description']);
     });
   }
 
@@ -69,147 +77,162 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                Container(
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(
-                          () => SecondScreen(weatherData: widget.weatherData));
-                    },
-                    onHorizontalDragEnd: (DragEndDetails details) {
-                      if (details.primaryVelocity! < 1) {
-                        setState(() {
-                          if (selectedIndex < 8) {
-                            selectedIndex++;
-                            selectedIndex == 0
-                                ? updateWeather(widget.weatherData['current'])
-                                : updateWeather(
-                                    widget.weatherData['daily'][selectedIndex]);
-                          }
-                        });
-                      } else if (details.primaryVelocity! > 1) {
-                        setState(() {
-                          if (selectedIndex > 0) {
-                            selectedIndex--;
-                            selectedIndex == 0
-                                ? updateWeather(widget.weatherData['current'])
-                                : updateWeather(
-                                    widget.weatherData['daily'][selectedIndex]);
-                          }
-                        });
-                      }
-                    },
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('${widget.weatherData['city']}',
+      backgroundColor: Colors.transparent,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: backgroundColor,
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Center(
+              child: Column(
+                children: [
+                  Container(
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() =>
+                            SecondScreen(weatherData: widget.weatherData));
+                      },
+                      onHorizontalDragEnd: (DragEndDetails details) {
+                        if (details.primaryVelocity! < 1) {
+                          setState(() {
+                            if (selectedIndex < 8) {
+                              selectedIndex++;
+                              selectedIndex == 0
+                                  ? updateWeather(widget.weatherData['current'])
+                                  : updateWeather(widget.weatherData['daily']
+                                      [selectedIndex]);
+                            }
+                          });
+                        } else if (details.primaryVelocity! > 1) {
+                          setState(() {
+                            if (selectedIndex > 0) {
+                              selectedIndex--;
+                              selectedIndex == 0
+                                  ? updateWeather(widget.weatherData['current'])
+                                  : updateWeather(widget.weatherData['daily']
+                                      [selectedIndex]);
+                            }
+                          });
+                        }
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('${widget.weatherData['city']}',
+                                style: TextStyle(
+                                    fontSize: 30, color: Colors.black)),
+                          ),
+                          icon,
+                          Text('$condition',
                               style:
-                                  TextStyle(fontSize: 30, color: Colors.white)),
-                        ),
-                        getIcon(
-                            '${widget.weatherData['current']['weather'][0]['description']}'),
-                        Text('$condition',
+                                  TextStyle(fontSize: 30, color: Colors.black)),
+                          Text(
+                            '$temp°',
                             style:
-                                TextStyle(fontSize: 30, color: Colors.white)),
-                        Text(
-                          '$temp°',
-                          style: TextStyle(fontSize: 100, color: Colors.white),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text('$windSpeed km/h',
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.white)),
-                              Text('$humidity%',
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.white))
-                            ],
+                                TextStyle(fontSize: 100, color: Colors.black),
                           ),
-                        ),
-                        SizedBox(height: 60),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          child: ListView.builder(
-                            itemCount: widget.weatherData['daily'].length,
-                            itemBuilder: (context, index) {
-                              return SizedBox(
-                                height: 20,
-                                width: 130,
-                                child: ListTile(
-                                  key: Key(date.toString()),
-                                  selected:
-                                      selectedIndex == index ? true : false,
-                                  title: Text(
-                                    '${DateFormat('EEE, d MMM').format(DateTime.fromMillisecondsSinceEpoch(widget.weatherData['daily'][index]['dt'] * 1000))}',
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('$windSpeed km/h',
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: selectedIndex == index
-                                            ? Colors.white
-                                            : Colors.grey),
-                                  ),
-                                ),
-                              );
-                            },
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
+                                        fontSize: 20, color: Colors.black)),
+                                Text('$humidity%',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black))
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 40),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          child: ListView.builder(
-                            itemCount: hourly.length,
-                            itemBuilder: (context, index) {
-                              return SizedBox(
-                                height: 20,
-                                width: 130,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '${DateFormat('jm').format(DateTime.fromMillisecondsSinceEpoch(hourly[index]['dt'] * 1000))}',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                        getIcon(
-                                            '${hourly[index]['weather'][0]['description']}',
-                                            height: 40),
-                                        Text(
-                                          '${hourly[index]['temp'].toInt()}°',
-                                          style: TextStyle(
-                                              fontSize: 40,
-                                              color: Colors.white),
-                                        ),
-                                      ],
+                          SizedBox(height: 60),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            child: ListView.builder(
+                              itemCount: widget.weatherData['daily'].length,
+                              itemBuilder: (context, index) {
+                                return SizedBox(
+                                  height: 20,
+                                  width: 130,
+                                  child: ListTile(
+                                    key: Key(date.toString()),
+                                    selected:
+                                        selectedIndex == index ? true : false,
+                                    onTap: () {
+                                      selectedIndex = index;
+                                      setState(() {
+                                        updateWeather(
+                                            widget.weatherData['current']);
+                                        updateWeather(
+                                            widget.weatherData['daily']
+                                                [selectedIndex]);
+                                      });
+                                    },
+                                    title: Text(
+                                      '${DateFormat('EEE, d MMM').format(DateTime.fromMillisecondsSinceEpoch(widget.weatherData['daily'][index]['dt'] * 1000))}',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: selectedIndex == index
+                                              ? Colors.black
+                                              : Colors.grey),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
+                                );
+                              },
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 40),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            child: ListView.builder(
+                              itemCount: hourly.length,
+                              itemBuilder: (context, index) {
+                                return SizedBox(
+                                  height: 20,
+                                  width: 130,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '${DateFormat('jm').format(DateTime.fromMillisecondsSinceEpoch(hourly[index]['dt'] * 1000))}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          ),
+                                          getIcon(
+                                              '${hourly[index]['weather'][0]['description']}',
+                                              height: 40),
+                                          Text(
+                                            '${hourly[index]['temp'].toInt()}°',
+                                            style: TextStyle(
+                                                fontSize: 40,
+                                                color: Colors.black),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
